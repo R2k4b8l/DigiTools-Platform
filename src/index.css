@@ -1,0 +1,83 @@
+/* Index CSS */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* Theme Variables */
+@theme {
+  --font-manrope: "Manrope", sans-serif;
+}
+
+/* Body Styles font */
+body {
+  font-family: var(--font-manrope);
+}
+
+
+/* =========================
+   Shared Gradient Variables
+========================= */
+:root {
+  --primary-gradient: linear-gradient(
+    to right,
+    rgba(79, 57, 246, 1) 0%,
+    rgba(149, 20, 250, 1) 100%
+  );
+  --primary-solid: rgba(79, 57, 246, 1);
+}
+
+
+/* Shared Gradient Border */
+.border-gradient-r-to {
+  position: relative;
+  border-radius: inherit;
+  z-index: 0;
+}
+
+/* Shared Gradient Border Pseudo-element */
+.border-gradient-r-to::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px; 
+  border-radius: 10.75rem; 
+  background: var(--primary-gradient);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Shared Gradient Text */
+@utility text-gradient-brand {
+  background-image: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Shared Gradient Background */
+@utility gradient-bg {
+  background-image: var(--primary-gradient);
+}
+
+
+/* Shared Gradient Tooltip */
+.tooltip-gradient::before {
+  background: var(--primary-gradient) !important;
+  color: white;
+  border-radius: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  border: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Tooltip arrow */
+.tooltip-gradient::after {
+  border-color: var(--primary-solid) transparent transparent transparent !important;
+}
